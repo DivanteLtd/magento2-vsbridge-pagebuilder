@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Divante\VsbridgePageBuilder\Api\PageRepositoryInterface" type="Divante\VsbridgePageBuilder\Model\PageRepository"/>
+    <preference for="Divante\VsbridgePageBuilder\Model\Page\Command\GetInterface" type="Divante\VsbridgePageBuilder\Model\Page\Command\Get"/>
+    <preference for="Divante\VsbridgePageBuilder\Model\SettingsRegistryInterface" type="Divante\VsbridgePageBuilder\Model\SettingsRegistry"/>
+    <preference for="Divante\VsbridgeIndexerCms\Api\ContentProcessorInterface" type="Divante\VsbridgePageBuilder\Model\ContentProcessor"/>
+
+    <type name="Divante\VsbridgePageBuilder\Model\DataConverter\RendererPool">
+        <arguments>
+            <argument name="renderers" xsi:type="array">
+                <item name="default" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Base</item>
+                <item name="text" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Html</item>
+                <item name="html" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Html</item>
+                <item name="products" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Products</item>
+                <item name="buttons" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Buttons</item>
+                <item name="heading" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Heading</item>
+                <item name="image" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Image</item>
+                <item name="slider" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Slider</item>
+                <item name="banner" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Banner</item>
+                <item name="video" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Video</item>
+                <item name="divider" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Divider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRendererPool">
+        <arguments>
+            <argument name="renderers" xsi:type="array">
+                <item name="slide" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Slide</item>
+                <item name="banner" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Slide</item>
+                <item name="link" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Link</item>
+                <item name="line" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Line</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Divante\VsbridgePageBuilder\Block\Product\Widget\Link" type="Divante\VsbridgePageBuilder\Block\Widget\Link">
+        <arguments>
+            <argument name="entityResource" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product</argument>
+            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Product\AttributeDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Divante\VsbridgePageBuilder\Block\Category\Widget\Link" type="Divante\VsbridgePageBuilder\Block\Widget\Link">
+        <arguments>
+            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Category\AttributeDataProvider</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\Filter\Template">
+        <plugin name="vsbridgeTemplatePlugin" type="Divante\VsbridgePageBuilder\Plugin\TemplatePlugin" />
+    </type>
+
+    <type name="Divante\VsbridgeIndexerCms\Index\Mapping\CmsBlock">
+        <plugin name="mappingCmsBlockPlugin" type="Divante\VsbridgePageBuilder\Plugin\Mapping\CmsBlockPlugin" />
+    </type>
+    <type name="Divante\VsbridgeIndexerCms\Index\Mapping\CmsPage">
+        <plugin name="mappingCmsPluginPlugin" type="Divante\VsbridgePageBuilder\Plugin\Mapping\CmsPagePlugin" />
+    </type>
+    <type name="Divante\VsbridgeIndexerCatalog\Index\Mapping\Category">
+        <plugin name="mappingCmsPluginPlugin" type="Divante\VsbridgePageBuilder\Plugin\Mapping\CategoryPlugin"/>
+    </type>
+    <type name="Divante\VsbridgeIndexerCatalog\Index\Mapping\Product">
+        <plugin name="mappingCmsPluginPlugin" type="Divante\VsbridgePageBuilder\Plugin\Mapping\ProductPlugin"/>
+    </type>
+
+    <type name="Divante\VsbridgeIndexerCatalog\Model\Indexer\DataProvider\Category\AttributeData">
+        <plugin name="updateCategoryDescription" type="Divante\VsbridgePageBuilder\Plugin\DataProvider\UpdateCategoryDescription"/>
+    </type>
+    <type name="Divante\VsbridgeIndexerCatalog\Model\Indexer\DataProvider\Product\AttributeData">
+        <plugin name="updateProductDescription" type="Divante\VsbridgePageBuilder\Plugin\DataProvider\UpdateProductDescription"/>
+    </type>
+
+    <type name="Divante\VsbridgePageBuilder\Plugin\DataProvider\CatalogPlugin">
+        <arguments>
+            <argument name="templateFilterModel" xsi:type="string">Magento\Widget\Model\Template\Filter</argument>
+        </arguments>
+    </type>
+</config>

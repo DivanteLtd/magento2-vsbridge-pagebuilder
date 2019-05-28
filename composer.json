@@ -1,0 +1,22 @@
+{
+  "name": "divante/magento2-vsbridge-pagebuilder",
+  "description": "Support for pagebuilder for magento2-vsbridge-indexer",
+  "type": "magento2-module",
+  "authors": [{
+    "name": "Agata",
+    "email": "afirlejczyk@divante.pl"
+  }],
+  "require": {
+    "php": ">=7.0.2"
+  },
+  "autoload": {
+    "files": [
+      "src/registration.php"
+    ],
+    "psr-4": {
+      "Divante\\VsbridgePageBuilder\\": "/src"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

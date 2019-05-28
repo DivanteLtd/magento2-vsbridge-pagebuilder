@@ -1,0 +1,252 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="vsbridge_product_link" class="Divante\VsbridgePageBuilder\Block\Product\Widget\Link">
+        <label translate="true">VSF Catalog Product Link</label>
+        <description translate="true">Widget used with VSF</description>
+        <parameters>
+            <parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Product</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="anchor_text" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Text</label>
+                <description translate="true">If empty, we'll use the product name here.</description>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default"
+                            value="product/widget/link/link_block.phtml"
+                            selected="true">
+                        <label translate="true">Product Link Block Template</label>
+                    </option>
+                    <option name="link_inline" value="product/widget/link/link_inline.phtml">
+                        <label translate="true">Product Link Inline Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="vsbridge_category_link"
+            class="Divante\VsbridgePageBuilder\Block\Category\Widget\Link"
+            is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/category_widget_link.png">
+        <label translate="true">Catalog Category Link</label>
+        <description translate="true">Link to a Specified Category</description>
+        <parameters>
+            <parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Category</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Category...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="anchor_text" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Text</label>
+                <description translate="true">If empty, we'll use the category name here.</description>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default"
+                            value="category/widget/link/link_block.phtml"
+                            selected="true">
+                        <label translate="true">Category Link Block Template</label>
+                    </option>
+                    <option name="link_inline" value="category/widget/link/link_inline.phtml">
+                        <label translate="true">Category Link Inline Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="vsbridge_cms_page_link" class="Divante\VsbridgePageBuilder\Block\Widget\Page\Link" is_email_compatible="true"
+            placeholder_image="Magento_Cms::images/widget_page_link.png">
+        <label translate="true">VSF CMS Page Link</label>
+        <description translate="true">Link to a CMS Page</description>
+        <parameters>
+            <parameter name="page_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">CMS Page</label>
+                <block class="Magento\Cms\Block\Adminhtml\Page\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Page...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="anchor_text" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Text</label>
+                <description translate="true">If empty, the Page Title will be used</description>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Anchor Custom Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/link/link_block.phtml" selected="true">
+                        <label translate="true">CMS Page Link Block Template</label>
+                    </option>
+                    <option name="link_inline" value="widget/link/link_inline.phtml">
+                        <label translate="true">CMS Page Link Inline Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="vsbridge_cms_static_block" class="Divante\VsbridgePageBuilder\Block\Widget\Block"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">VSF - CMS Static Block</label>
+        <description translate="true">Contents of a Static Block</description>
+        <parameters>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label translate="true">Block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Block...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="10">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/static_block/default.phtml" selected="true">
+                        <label translate="true">CMS Static Block Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="vsbridge_products_list" class="Divante\VsbridgePageBuilder\Block\Widget\Product\ProductsList" is_email_compatible="true"
+            placeholder_image="Magento_CatalogWidget::images/products_list.png" ttl="86400">
+        <label translate="true">VSF Catalog Products List</label>
+        <description translate="true">List of Products as json</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="show_pager" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Page Control</label>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="Magento_CatalogWidget::product/widget/content/grid.phtml" selected="true">
+                        <label translate="true">Products Grid Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">
+                    <![CDATA[Time in seconds between the widget updates.
+                    <br/>If not set, equals to 86400 seconds (24 hours). To update widget instantly, go to Cache Management and clear Blocks HTML Output cache.
+                    <br/>Widget will not show products that begin to match the specified conditions until cache is refreshed.]]>
+                </description>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="true" required="true" sort_order="10"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.bottom">
+                <template name="grid" value="default" />
+            </container>
+        </containers>
+    </widget>
+    <widget id="vsbridge_banner_block" class="Divante\VsbridgePageBuilder\Block\Widget\Banner">
+        <label translate="true">VSF Dynamic Block</label>
+        <description translate="true">Display Specify Dynamic Block</description>
+        <parameters>
+            <parameter xsi:type="select" name="display_mode" required="true" visible="true">
+                <label translate="true">Dynamic Blocks to Display</label>
+                <options>
+                    <option name="fixed" value="fixed" selected="true">
+                        <label translate="true">Specified Dynamic Blocks</label>
+                    </option>
+                    <option name="salesrule" value="salesrule">
+                        <label translate="true">Cart Price Rule Related</label>
+                    </option>
+                    <option name="catalogrule" value="catalogrule">
+                        <label translate="true">Catalog Price Rule Related</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter xsi:type="multiselect" name="types" visible="true" source_model="Magento\Banner\Model\Config">
+                <label translate="true">Restrict by Dynamic Block Types</label>
+            </parameter>
+            <parameter xsi:type="select" name="rotate" visible="true">
+                <label translate="true">Rotation Mode</label>
+                <options>
+                    <option name="none" value="" selected="true">
+                        <label translate="true">Display all instead of rotating</label>
+                    </option>
+                    <option name="random" value="random">
+                        <label translate="true">One at the time, Random</label>
+                    </option>
+                    <option name="series" value="series">
+                        <label translate="true">One at the time, Series</label>
+                    </option>
+                    <option name="shuffle" value="shuffle">
+                        <label translate="true">One at the time, Shuffle</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter xsi:type="block" name="banner_ids" visible="true">
+                <label translate="true">Specify Dynamic Blocks</label>
+                <depends>
+                    <parameter name="display_mode" value="fixed" />
+                </depends>
+                <block class="Magento\Banner\Block\Adminhtml\Widget\Chooser" />
+            </parameter>
+            <parameter xsi:type="select" name="template" required="true" visible="false">
+                <options>
+                    <option name="block" value="widget/block.phtml" selected="true">
+                        <label translate="true">Dynamic Block Template</label>
+                    </option>
+                    <option name="inline" value="widget/inline.phtml">
+                        <label translate="true">Dynamic Block Inline Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter xsi:type="text" name="unique_id" required="true" visible="false" />
+        </parameters>
+    </widget>
+</widgets>
