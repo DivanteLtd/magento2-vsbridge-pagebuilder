@@ -49,16 +49,23 @@ class Buttons implements RendererInterface
     {
         $xpath = new \DOMXPath($domDocument);
         $item = $this->attributeProcessor->getAttributes($node);
+        $buttons = $this->getButtonsNodes($xpath, $node);
+        $buttons = [];
 
-        $button = $this->getButtonNode($xpath, $node);
-        $linkRender = $this->childrenRendererPool->getRenderer(
-            $this->attributeProcessor->getAttributeValue($button, 'data-element')
-        );
+        foreach ($buttons as $button) {
+            $dataContentType = 'button-item';
+            $linkRender = $this->childrenRendererPool->getRenderer(
+                $this->attributeProcessor->getAttributeValue($button, 'data-element')
+            );
 
-        if ($linkRender) {
-            $settings = $linkRender->toArray($domDocument, $button);
-            $item['link_settings'] = $settings['link_settings'];
+            if ($linkRender) {
+                $settings = $linkRender->toArray($domDocument, $button);
+                $settings['data-content-type'] = 'button-item';
+                $buttons[] = $settings;
+            }
         }
+
+        $item['items'] = $buttons;
 
         return $item;
     }
@@ -67,13 +74,11 @@ class Buttons implements RendererInterface
      * @param \DOMXPath $xpath
      * @param \DOMElement $node
      *
-     * @return \DOMElement
+     * @return \DOMNodeList
      */
-    private function getButtonNode(\DOMXPath $xpath, \DOMElement $node)
+    private function getButtonsNodes(\DOMXPath $xpath, \DOMElement $node)
     {
-        $content = $xpath->query('.//*[contains(@class, "pagebuilder-button")]', $node);
-
-        return $content->item(0);
+        return $xpath->query('.//*[contains(@class, "pagebuilder-button")]', $node);
     }
 
     /**

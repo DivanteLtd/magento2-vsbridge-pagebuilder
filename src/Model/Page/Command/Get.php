@@ -15,7 +15,7 @@ use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
 use Magento\Framework\App\AreaList;
 
-use Divante\VsbridgeIndexerCms\Model\ContentProcessor;
+use Divante\VsbridgeIndexerCms\Api\ContentProcessorInterface;
 
 /**
  * Class Get
@@ -43,7 +43,7 @@ class Get implements GetInterface
     private $areaList;
 
     /**
-     * @var ContentProcessor
+     * @var ContentProcessorInterface
      */
     private $contentProcessor;
 
@@ -53,14 +53,14 @@ class Get implements GetInterface
      * @param AreaList $areaList
      * @param State $appState
      * @param FilterProvider $filterProvider
-     * @param ContentProcessor $contentProcessor
+     * @param ContentProcessorInterface $contentProcessor
      * @param \Magento\Cms\Model\PageFactory $pageFactory
      */
     public function __construct(
         AreaList $areaList,
         State $appState,
         FilterProvider $filterProvider,
-        ContentProcessor $contentProcessor,
+        ContentProcessorInterface $contentProcessor,
         \Magento\Cms\Model\PageFactory $pageFactory
     ) {
         $this->areaList = $areaList;

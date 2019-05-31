@@ -29,6 +29,7 @@
                 <item name="slide" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Slide</item>
                 <item name="banner" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Slide</item>
                 <item name="link" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Link</item>
+                <item name="empty_link" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\EmptyLink</item>
                 <item name="line" xsi:type="object">Divante\VsbridgePageBuilder\Model\DataConverter\ChildrenRenderer\Line</item>
             </argument>
         </arguments>
