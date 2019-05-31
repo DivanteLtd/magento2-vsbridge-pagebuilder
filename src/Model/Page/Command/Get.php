@@ -87,23 +87,4 @@ class Get implements GetInterface
 
         return $page;
     }
-
-    /**
-     * @param string $content
-     *
-     * @return string
-     * @throws \Exception
-     */
-    private function getContentFiltered(string $content)
-    {
-        $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
-
-        $emulatedResult = $this->appState->emulateAreaCode(
-            Area::AREA_FRONTEND,
-            [$this->filterProvider->getPageFilter(), 'filter'],
-            [$content]
-        );
-
-        return $emulatedResult;
-    }
 }

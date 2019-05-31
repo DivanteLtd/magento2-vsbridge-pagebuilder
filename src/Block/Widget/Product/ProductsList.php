@@ -15,6 +15,7 @@ use Magento\Framework\View\LayoutFactory;
 
 /**
  * Class ProductsList
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList
 {
@@ -40,6 +41,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList
      * @param Json|null $json
      * @param LayoutFactory|null $layoutFactory
      * @param EncoderInterface|null $urlEncoder
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         \Magento\Catalog\Block\Product\Context $context,

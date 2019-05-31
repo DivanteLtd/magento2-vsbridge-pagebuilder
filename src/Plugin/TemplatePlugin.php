@@ -36,10 +36,11 @@ class TemplatePlugin
      * @param string $value
      *
      * @return array
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function beforeFilter(\Magento\Framework\Filter\Template $subject, $value)
     {
-        if ($this->settingRegistry->getConvertToJson()) {
+        if ($this->settingRegistry->convertToJson()) {
             $value = $this->updateContentHtml($value);
         }
 

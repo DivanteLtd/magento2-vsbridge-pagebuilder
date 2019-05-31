@@ -37,7 +37,6 @@ class Html implements RendererInterface
     public function toArray(\DOMDocument $domDocument, \DOMElement $node): array
     {
         $item = $this->attributeProcessor->getAttributes($node);
-        $dataContentType = null;
         $html = '';
 
         if ($node->hasChildNodes()) {

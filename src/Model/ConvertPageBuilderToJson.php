@@ -110,18 +110,7 @@ class ConvertPageBuilderToJson
         foreach ($nodes as $node) {
             if ($node->attributes) {
                 $childNodes = $this->getChildNodes($xpath, $node);
-                $dataContentType = $node->attributes->getNamedItem('data-content-type');
-
-                if ($dataContentType instanceof \DOMNode) {
-                    $contentType = $dataContentType->nodeValue;
-                } else {
-                    $contentType = 'default';
-                    $dataRole = $node->attributes->getNamedItem('role');
-
-                    if ($dataRole instanceof \DOMNode) {
-                        $contentType = (string)$dataRole->nodeValue;
-                    }
-                }
+                $contentType = $this->getContentType($node);
 
                 if (self::TAB_LIST_COMPONENT !== $contentType) {
                     $renderer = $this->rendererPool->getRenderer($contentType);
@@ -145,6 +134,29 @@ class ConvertPageBuilderToJson
         }
 
         return $items;
+    }
+
+    /**
+     * @param \DOMElement $node
+     *
+     * @return string
+     */
+    private function getContentType(\DOMElement $node)
+    {
+        $dataContentType = $node->attributes->getNamedItem('data-content-type');
+
+        if ($dataContentType instanceof \DOMNode) {
+            $contentType = $dataContentType->nodeValue;
+        } else {
+            $contentType = 'default';
+            $dataRole = $node->attributes->getNamedItem('role');
+
+            if ($dataRole instanceof \DOMNode) {
+                $contentType = (string)$dataRole->nodeValue;
+            }
+        }
+
+        return $contentType;
     }
 
     /**

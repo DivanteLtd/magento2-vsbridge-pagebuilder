@@ -35,15 +35,25 @@
         </arguments>
     </type>
 
+    <virtualType name="Divante\VsbridgePageBuilder\Model\Catalog\GetProductAttributesVirtual" type="Divante\VsbridgePageBuilder\Model\Catalog\GetAttributes">
+        <arguments>
+            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Product\AttributeDataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Divante\VsbridgePageBuilder\Model\Catalog\GetCategoryAttributesVirtual" type="Divante\VsbridgePageBuilder\Model\Catalog\GetAttributes">
+        <arguments>
+            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Category\AttributeDataProvider</argument>
+        </arguments>
+    </virtualType>
     <virtualType name="Divante\VsbridgePageBuilder\Block\Product\Widget\Link" type="Divante\VsbridgePageBuilder\Block\Widget\Link">
         <arguments>
             <argument name="entityResource" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product</argument>
-            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Product\AttributeDataProvider</argument>
+            <argument name="getAttributes" xsi:type="object">Divante\VsbridgePageBuilder\Model\Catalog\GetProductAttributesVirtual</argument>
         </arguments>
     </virtualType>
     <virtualType name="Divante\VsbridgePageBuilder\Block\Category\Widget\Link" type="Divante\VsbridgePageBuilder\Block\Widget\Link">
         <arguments>
-            <argument name="attributeProvider" xsi:type="object">Divante\VsbridgeIndexerCatalog\Model\ResourceModel\Category\AttributeDataProvider</argument>
+            <argument name="getAttributes" xsi:type="object">Divante\VsbridgePageBuilder\Model\Catalog\GetCategoryAttributesVirtual</argument>
         </arguments>
     </virtualType>
 

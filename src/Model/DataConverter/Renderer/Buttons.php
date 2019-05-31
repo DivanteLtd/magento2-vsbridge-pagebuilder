@@ -49,11 +49,10 @@ class Buttons implements RendererInterface
     {
         $xpath = new \DOMXPath($domDocument);
         $item = $this->attributeProcessor->getAttributes($node);
-        $buttons = $this->getButtonsNodes($xpath, $node);
+        $buttonNodes = $this->getButtonsNodes($xpath, $node);
         $buttons = [];
 
-        foreach ($buttons as $button) {
-            $dataContentType = 'button-item';
+        foreach ($buttonNodes as $button) {
             $linkRender = $this->childrenRendererPool->getRenderer(
                 $this->attributeProcessor->getAttributeValue($button, 'data-element')
             );

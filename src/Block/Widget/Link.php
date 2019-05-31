@@ -8,10 +8,8 @@
 
 namespace Divante\VsbridgePageBuilder\Block\Widget;
 
-use Divante\VsbridgeIndexerCatalog\Api\Data\CatalogConfigurationInterface;
-use Divante\VsbridgeIndexerCatalog\Api\SlugGeneratorInterface;
-use Divante\VsbridgeIndexerCatalog\Model\ResourceModel\EavAttributesInterface;
-
+use Divante\VsbridgePageBuilder\Model\Catalog\GetAttributes;
+use Magento\CatalogUrlRewrite\Model;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
@@ -23,54 +21,33 @@ class Link extends \Magento\Catalog\Block\Widget\Link
 {
 
     /**
-     * @var string
-     */
-    private $productUrlSuffix;
-
-    /**
      * @var ScopeConfigInterface
      */
     private $scopeConfig;
 
     /**
-     * @var CatalogConfigurationInterface
+     * @var \Divante\VsbridgePageBuilder\Model\Catalog\GetAttributes
      */
-    private $settings;
-
-    /**
-     * @var SlugGeneratorInterface
-     */
-    private $slugGenerator;
-
-    /**
-     * @var EavAttributesInterface
-     */
-    private $attributeProvider = null;
+    private $getAttributes;
 
     /**
      * Link constructor.
      *
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param UrlFinderInterface $urlFinder
-     * @param CatalogConfigurationInterface $configSettings
-     * @param SlugGeneratorInterface $slugGenerator
+     * @param \Divante\VsbridgePageBuilder\Model\Catalog\GetAttributes $getAttributes
      * @param \Magento\Catalog\Model\ResourceModel\AbstractResource|null $entityResource
-     * @param EavAttributesInterface|null $attributeProvider
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         UrlFinderInterface $urlFinder,
-        CatalogConfigurationInterface $configSettings,
-        SlugGeneratorInterface $slugGenerator,
+        GetAttributes $getAttributes,
         \Magento\Catalog\Model\ResourceModel\AbstractResource $entityResource = null,
-        EavAttributesInterface $attributeProvider = null,
         array $data = []
     ) {
-        $this->attributeProvider = $attributeProvider;
-        $this->settings = $configSettings;
-        $this->slugGenerator = $slugGenerator;
         $this->scopeConfig = $context->getScopeConfig();
+        $this->getAttributes = $getAttributes;
 
         parent::__construct($context, $urlFinder, $entityResource, $data);
     }
@@ -96,7 +73,7 @@ class Link extends \Magento\Catalog\Block\Widget\Link
             UrlRewrite::STORE_ID => $store->getId(),
         ];
 
-        $urlSuffix = $this->getProductUrlSuffix();
+        $urlSuffix = $this->getSuffix();
         $rewrite = $this->urlFinder->findOneByData($filterData);
         $data = [];
 
@@ -124,16 +101,7 @@ class Link extends \Magento\Catalog\Block\Widget\Link
     private function getAttributes(int $entityId, \Magento\Store\Api\Data\StoreInterface $store)
     {
         $storeId = (int)$store->getId();
-        $attributes = $this->loadAttributes($entityId, $storeId);
-
-        if (isset($attributes['name'])) {
-            $slug = $this->slugGenerator->generate($attributes['name'], $entityId);
-            $attributes['slug'] = $slug;
-            $attributes['url_key'] = $slug;
-            unset($attributes['name']);
-        } else {
-            $attributes['slug'] = $attributes['url_key'];
-        }
+        $attributes = $this->getAttributes->execute($entityId, $store->getId());
 
         if ($this->_entityResource instanceof \Magento\Catalog\Model\ResourceModel\Product) {
             $staticAttributes = $this->_entityResource->getAttributeRawValue($entityId, ['sku'], $storeId);
@@ -144,42 +112,30 @@ class Link extends \Magento\Catalog\Block\Widget\Link
     }
 
     /**
-     * @param int $entityId
-     * @param int $storeId
-     *
-     * @return array
-     * @throws \Exception
+     * @return string
      */
-    private function loadAttributes(int $entityId, int $storeId)
+    private function getSuffix()
     {
-        $attributeCodes = [
-            'sku',
-            'url_key',
-        ];
-
-        if ($this->settings->useMagentoUrlKeys()) {
-            $attributeCodes[] = 'name';
+        if ($this->_entityResource instanceof \Magento\Catalog\Model\ResourceModel\Product) {
+            return $this->geProductUrlSuffix();
         }
 
-        $attributes = $this->attributeProvider->loadAttributesData($storeId, [$entityId], $attributeCodes);
-        $attributes = $attributes[$entityId];
-
-        return $attributes;
+        return $this->getCategoryUrlSuffix();
     }
 
     /**
-     * Retrieve product rewrite suffix for store
-     *
      * @return string
      */
-    private function getProductUrlSuffix()
+    private function geProductUrlSuffix()
     {
-        if (null === $this->productUrlSuffix) {
-            $this->productUrlSuffix = $this->scopeConfig->getValue(
-                \Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator::XML_PATH_PRODUCT_URL_SUFFIX
-            );
-        }
+        return (string)$this->scopeConfig->getValue(Model\ProductUrlPathGenerator::XML_PATH_PRODUCT_URL_SUFFIX);
+    }
 
-        return $this->productUrlSuffix;
+    /**
+     * @return string
+     */
+    private function getCategoryUrlSuffix()
+    {
+        return (string)$this->scopeConfig->getValue(Model\CategoryUrlPathGenerator::XML_PATH_CATEGORY_URL_SUFFIX);
     }
 }

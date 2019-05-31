@@ -20,6 +20,7 @@ class UpdateProductDescription extends CatalogPlugin
      * @param array $result
      *
      * @return array
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterAddData(ProductAttributes $subject, array $result)
     {

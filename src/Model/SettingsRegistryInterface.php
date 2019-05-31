@@ -25,5 +25,5 @@ interface SettingsRegistryInterface
     /**
      * @return bool
      */
-    public function getConvertToJson();
+    public function convertToJson();
 }
