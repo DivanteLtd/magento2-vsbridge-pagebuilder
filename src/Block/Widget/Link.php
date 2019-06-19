@@ -16,6 +16,7 @@ use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 
 /**
  * Class Link
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Link extends \Magento\Catalog\Block\Widget\Link
 {
