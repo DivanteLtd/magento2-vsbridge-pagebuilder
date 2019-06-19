@@ -17,6 +17,14 @@ use Divante\VsbridgePageBuilder\Model\DataConverter\RendererInterface;
  */
 class Image implements RendererInterface
 {
+    /**
+     * @var array
+     */
+    private $blackListAttributes = [
+        'class',
+        'data-element',
+        'src',
+    ];
 
     /**
      * @var ChildrenRendererPool
@@ -47,6 +55,7 @@ class Image implements RendererInterface
      */
     public function toArray(\DOMDocument $domDocument, \DOMElement $node): array
     {
+        $xpath = new \DOMXPath($domDocument);
         $item = $this->attributeProcessor->getAttributes($node);
         $linkNode = $node->firstChild;
         $render = null;
@@ -58,24 +67,74 @@ class Image implements RendererInterface
         }
 
         $linkSettings = [];
-        $html = '';
 
         if ($render) {
             $linkSettings = $render->toArray($domDocument, $linkNode);
-
-            foreach ($linkNode->childNodes as $childNode) {
-                $html .= $domDocument->saveHTML($childNode);
-            }
+            $imagesOptions = $this->getImagesOptions($xpath, $linkNode);
         } else {
-            foreach ($node->childNodes as $childNode) {
-                $html .= $domDocument->saveHTML($childNode);
-            }
+            $imagesOptions = $this->getImagesOptions($xpath, $node);
         }
 
-        $linkSettings['value'] = $html;
-        $item['image_settings'] = $linkSettings;
+        $item['image_settings'] = $imagesOptions;
+        $item['image_settings']['link_settings'] = [];
+
+        if (isset($linkSettings['link_settings'])) {
+            $item['image_settings']['link_settings' ] = $linkSettings['link_settings'];
+        }
 
         return $item;
+    }
+
+    /**
+     * @param \DOMXPath $xpath
+     * @param \DOMElement $node
+     *
+     * @return array
+     */
+    private function getImagesOptions(\DOMXPath $xpath, \DOMElement $node)
+    {
+        $imgNodes = $this->getImagesNodes($xpath, $node);
+        $options = [];
+
+        foreach ($imgNodes as $imgNode) {
+            $dataElement = $this->attributeProcessor->getAttributeValue($imgNode, 'data-element');
+            $src = $this->attributeProcessor->getAttributeValue($imgNode, 'src');
+
+            if (empty($options)) {
+                $options = $this->getImgBaseAttributes($imgNode);
+            }
+
+            $options['scrset'][$dataElement] = $src;
+        }
+
+        return $options;
+    }
+
+    /**
+     * @param \DOMElement $node
+     *
+     * @return array
+     */
+    private function getImgBaseAttributes(\DOMElement $node): array
+    {
+        $attributes = $this->attributeProcessor->getAttributes($node);
+
+        foreach ($this->blackListAttributes as $attribute) {
+            unset($attributes[$attribute]);
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * @param \DOMXPath $xpath
+     * @param \DOMElement $node
+     *
+     * @return \DOMNodeList
+     */
+    private function getImagesNodes(\DOMXPath $xpath, \DOMElement $node)
+    {
+        return $xpath->query('.//img', $node);
     }
 
     /**
