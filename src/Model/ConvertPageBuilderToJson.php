@@ -63,8 +63,12 @@ class ConvertPageBuilderToJson
                 $item[$attribute->nodeName] = $attribute->nodeValue;
             }
 
-            $childItems = $this->convertItems($domDocument, $childNodes);
-            $item['items'] = $childItems;
+            $childOptions = $this->convertItems($domDocument, $childNodes);
+            $item['items'] = $childOptions['children'];
+
+            // @TODO fix me, add option to configuration
+            $item['full-width'] = $childOptions['has_slider'];
+
             $result[] = $item;
         }
 
@@ -105,6 +109,7 @@ class ConvertPageBuilderToJson
     {
         $xpath = new \DOMXPath($domDocument);
         $items = [];
+        $hasSlider = false;
 
         /** @var \DOMElement $node */
         foreach ($nodes as $node) {
@@ -128,12 +133,21 @@ class ConvertPageBuilderToJson
                         }
 
                         $items[] = $item;
+
+                        if ($renderer instanceof \Divante\VsbridgePageBuilder\Model\DataConverter\Renderer\Slider) {
+                            $hasSlider = true;
+                        }
                     }
                 }
             }
         }
 
-        return $items;
+        $itemsOptions = [
+            'children' => $items,
+            'has_slider' => $hasSlider,
+        ];
+
+        return $itemsOptions;
     }
 
     /**
