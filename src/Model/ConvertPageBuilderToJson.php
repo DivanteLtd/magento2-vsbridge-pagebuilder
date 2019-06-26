@@ -122,7 +122,8 @@ class ConvertPageBuilderToJson
                     $childrenItemsArray = [];
 
                     if (!empty($childNodes) && $renderer && $renderer->processChildren()) {
-                        $childrenItemsArray = $this->convertItems($domDocument, $childNodes);
+                        $childrenOptions = $this->convertItems($domDocument, $childNodes);
+                        $childrenItemsArray = $childrenOptions['children'];
                     }
 
                     if ($renderer) {
