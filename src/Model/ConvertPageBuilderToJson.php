@@ -21,7 +21,7 @@ class ConvertPageBuilderToJson
 
     const BLOCK_TYPES = [
         'block',
-        'dynamic_block'
+        'dynamic_block',
     ];
 
     /**
@@ -94,8 +94,8 @@ class ConvertPageBuilderToJson
                     'data-content-type' => 'html',
                     "style" => "border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;",
                     'value' => $html,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -195,9 +195,12 @@ class ConvertPageBuilderToJson
 
         if (in_array($contentType, self::BLOCK_TYPES)) {
             $children = $xpath->query('.' . self::ROW_PATTERN, $node);
+            $childrenCount = $children->length;
 
-            if ($children->length) {
-                $children->item(0)->setAttribute('data-content-type', 'row');
+            if ($childrenCount) {
+                for ($i = 0; $i < $childrenCount; $i++) {
+                    $children->item($i)->setAttribute('data-content-type', 'row');
+                }
             }
 
             return $children;
