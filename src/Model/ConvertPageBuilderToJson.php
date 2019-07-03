@@ -87,13 +87,15 @@ class ConvertPageBuilderToJson
     private function getDefaultRow(string $html)
     {
         return [
-            'data-content-type' => 'row',
-            'data-element' => 'inner',
-            'items' => [
-                [
-                    'data-content-type' => 'html',
-                    "style" => "border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;",
-                    'value' => $html,
+            [
+                'data-content-type' => 'row',
+                'data-element' => 'inner',
+                'items' => [
+                    [
+                        'data-content-type' => 'html',
+                        "style" => "border-style: none; border-width: 1px; border-radius: 0px; margin: 0px; padding: 0px;",
+                        'value' => $html,
+                    ],
                 ],
             ],
         ];
