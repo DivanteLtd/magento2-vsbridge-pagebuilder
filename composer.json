@@ -6,8 +6,18 @@
     "name": "Agata",
     "email": "afirlejczyk@divante.pl"
   }],
+  "keywords": [
+    "magento",
+    "magento2",
+    "vuestorefront"
+  ],
+  "version": "1.0.0",
   "require": {
     "php": ">=7.0.2"
+  },
+  "require": {
+    "php": ">=7.0.2",
+    "divante/magento2-vsbridge-indexer": ">=1.1.0"
   },
   "autoload": {
     "files": [

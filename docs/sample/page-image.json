@@ -1,0 +1,75 @@
+[
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "class": "image",
+        "data-content-type": "image",
+        "data-appearance": "full-width",
+        "data-element": "main",
+        "style": "margin: 0px; padding: 0px; border-style: none;",
+        "content_type": "image",
+        "image_settings": {
+          "link_settings": {
+            "url_path": "joust-duffle-bag",
+            "target": "_blank",
+            "link_type": "product",
+            "title": "SEO TITLE"
+          },
+          "value": "<img class=\"pagebuilder-mobile-hidden\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/1547204731_baner_oprawy_3.png\" alt=\"SEO TEXT\" title=\"SEO TITLE\" data-element=\"desktop_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\"><img class=\"pagebuilder-mobile-only\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/full_width_banner_5.jpg\" alt=\"SEO TEXT\" title=\"SEO TITLE\" data-element=\"mobile_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\">"
+        }
+      }
+    ]
+  },
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "data-content-type": "image",
+        "data-appearance": "full-width",
+        "data-element": "main",
+        "style": "margin: 0px; padding: 0px; border-style: none;",
+        "content_type": "image",
+        "image_settings": {
+          "link_settings": {
+            "url_path": "www.divante.pl",
+            "target": "",
+            "link_type": "default",
+            "title": ""
+          },
+          "value": "<img class=\"pagebuilder-mobile-hidden\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/1494578159_1487860495_kamila_3_4.jpg\" alt=\"\" title=\"\" data-element=\"desktop_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\"><img class=\"pagebuilder-mobile-only\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/1494578159_1487860495_kamila_3_4.jpg\" alt=\"\" title=\"\" data-element=\"mobile_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\">"
+        }
+      }
+    ]
+  },
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "data-content-type": "image",
+        "data-appearance": "full-width",
+        "data-element": "main",
+        "style": "margin: 0px; padding: 0px; border-style: none;",
+        "content_type": "image",
+        "image_settings": {
+          "value": "<img class=\"pagebuilder-mobile-hidden\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/1529585052_okazje-banner_4.jpg\" alt=\"\" title=\"\" data-element=\"desktop_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\"><img class=\"pagebuilder-mobile-only\" src=\"https:\/\/magento2ee.test\/media\/wysiwyg\/1529585052_okazje-banner_4.jpg\" alt=\"\" title=\"\" data-element=\"mobile_image\" style=\"border-style: none; border-width: 1px; border-radius: 0px; max-width: 100%; height: auto;\">"
+        }
+      }
+    ]
+  }
+]

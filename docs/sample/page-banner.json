@@ -1,0 +1,154 @@
+[
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "data-content-type": "banner",
+        "data-appearance": "poster",
+        "data-show-button": "hover",
+        "data-show-overlay": "always",
+        "data-element": "main",
+        "style": "margin: 0px;",
+        "content_type": "banner",
+        "banner_settings": {
+          "data-background-images": {
+            "desktop_image": "https:\/\/magento2ee.test\/media\/wysiwyg\/1529585052_okazje-banner_2.jpg"
+          },
+          "wrapper_styles": "background-position: left top; background-size: contain; background-repeat: repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px;",
+          "style": "border-radius: 0px; min-height: 300px; background-color: transparent; padding: 40px;",
+          "items": [
+            {
+              "data-element": "content",
+              "value": "<div data-element=\"content\"><p>KONTENT MESSAGE TEXT I TAKIE TAM<\/p><\/div>\n"
+            },
+            {
+              "type": "button",
+              "class": "pagebuilder-banner-button pagebuilder-button-primary",
+              "data-element": "button",
+              "style": "opacity: 0; visibility: hidden;",
+              "value": "BUTTON primary on hover"
+            }
+          ],
+          "link_settings": {
+            "url_path": "",
+            "target": "",
+            "link_type": "page"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "content_type": "row",
+    "class": "row-full-width-inner",
+    "data-element": "inner",
+    "items": [
+      {
+        "data-content-type": "banner",
+        "data-appearance": "poster",
+        "data-show-button": "always",
+        "data-show-overlay": "never",
+        "data-element": "main",
+        "style": "margin: 0px;",
+        "content_type": "banner",
+        "banner_settings": {
+          "data-background-images": {
+            "desktop_image": "https:\/\/magento2ee.test\/media\/wysiwyg\/1494578159_1487860495_kamila_3_2.jpg",
+            "mobile_image": "https:\/\/magento2ee.test\/media\/wysiwyg\/1529585052_okazje-banner.jpg"
+          },
+          "wrapper_styles": "background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px;",
+          "style": "border-radius: 0px; min-height: 300px; background-color: transparent; padding: 40px;",
+          "items": [
+            {
+              "data-element": "content",
+              "value": "<div data-element=\"content\">\n<div> Text on banner<\/div>\n<div><\/div>\n<\/div>\n"
+            },
+            {
+              "type": "button",
+              "class": "pagebuilder-banner-button pagebuilder-button-secondary",
+              "data-element": "button",
+              "style": "opacity: 1; visibility: visible;",
+              "value": "button secondary"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "data-content-type": "banner",
+        "data-appearance": "poster",
+        "data-show-button": "always",
+        "data-show-overlay": "never",
+        "data-element": "main",
+        "style": "margin: 0px;",
+        "content_type": "banner",
+        "banner_settings": {
+          "data-background-images": {
+            "desktop_image": "https:\/\/magento2ee.test\/media\/wysiwyg\/1529585052_okazje-banner_3.jpg"
+          },
+          "wrapper_styles": "background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px;",
+          "style": "border-radius: 0px; min-height: 300px; background-color: transparent; padding: 40px;",
+          "items": [
+            {
+              "data-element": "content",
+              "value": "<div data-element=\"content\"><\/div>\n"
+            },
+            {
+              "type": "button",
+              "class": "pagebuilder-banner-button pagebuilder-button-link",
+              "data-element": "button",
+              "style": "opacity: 1; visibility: visible;",
+              "value": "Button LINK"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "content_type": "row",
+    "data-enable-parallax": "0",
+    "data-parallax-speed": "0.5",
+    "data-background-images": "{}",
+    "data-element": "inner",
+    "style": "justify-content: flex-start; display: flex; flex-direction: column; background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px; margin: 0px 0px 10px; padding: 10px;",
+    "items": [
+      {
+        "data-content-type": "banner",
+        "data-appearance": "poster",
+        "data-show-button": "never",
+        "data-show-overlay": "never",
+        "data-element": "main",
+        "style": "margin: 0px;",
+        "content_type": "banner",
+        "banner_settings": {
+          "data-background-images": {
+            "desktop_image": "https:\/\/magento2ee.test\/media\/wysiwyg\/full_width_banner_6.jpg"
+          },
+          "wrapper_styles": "background-position: left top; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; border-style: none; border-width: 1px; border-radius: 0px;",
+          "style": "border-radius: 0px; min-height: 300px; background-color: transparent; padding: 40px;",
+          "items": [
+            {
+              "data-element": "content",
+              "value": "<div data-element=\"content\"><\/div>"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
