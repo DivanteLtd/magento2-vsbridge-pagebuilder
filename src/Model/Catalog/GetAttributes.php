@@ -8,7 +8,7 @@
 
 namespace Divante\VsbridgePageBuilder\Model\Catalog;
 
-use Divante\VsbridgeIndexerCatalog\Api\Data\CatalogConfigurationInterface;
+use Divante\VsbridgeIndexerCatalog\Api\CatalogConfigurationInterface;
 use Divante\VsbridgeIndexerCatalog\Api\SlugGeneratorInterface;
 use Divante\VsbridgeIndexerCatalog\Model\ResourceModel\EavAttributesInterface;
 
